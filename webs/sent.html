@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="bg-[#201E1E]">
+    <header class="flex items-center justify-between px-4 py-3 bg-[#12181B]">
+        <button class="px-3 py-2 text-gray-300 bg-transparent border border-gray-400 rounded hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white" type="exit" id="botonsalir">Salir</button>
+        <h1 class="text-xl font-semibold text-gray-300" id="nombreusermain">Nombre</h1>
+    </header>
+    <div class="flex flex-row h-screen">
+        <div class="basis-2/12">
+                <div class="flex flex-col">
+                    <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">Enviar correo</button>
+                    <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">bandeja de entrada</button>
+                    <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">bandeja de enviados</button>
+                </div>
+        </div>
+        <div class="basis-3/12 flex flex-col ">
+            <!-- Nombre -->
+            <div class="p-4 text-2xl font-bold text-gray-300">
+                Bandeja de enviados
+            </div>
+                
+            <!-- Input de búsqueda y botón -->
+            <div class="flex p-4">
+              <input type="text" class="w-full px-2 py-1 border border-gray-400 rounded-l focus:outline-none" placeholder="Buscar">
+              <button class="px-4 py-1 bg-[#3749EA] text-white font-bold rounded-r">Buscar</button>
+            </div>
+              
+            <!-- Scroll -->
+            <div class="flex-grow overflow-y-auto" id="correos">
+                <!-- correos -->
+                <template id="template-correo">
+                    <div class="correo p-4 bg-[#303030] hover:bg-[#404040]">
+                        <div class="font-bold text-gray-300 remitente">Remitente</div>
+                        <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
+                        <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
+                    </div>   
+                </template>
+            </div>
+        </div>
+        <div class="basis-7/12 p-4 border border-gray-800" id="correo_seleccionado">
+            <div class="hidden" id="template_correoseleccionado">  
+                <div class="text-lg text-gray-100 font-bold mb-2 nombrecorreo">Nombre de la persona</div>
+                <div class="text-gray-400 mb-2 correocorreo">correo@ejemplo.com</div>
+                <div class="text-lg text-gray-100 font-bold mb-2 asuntocorreo">Asunto del correo</div>
+                <div class="text-gray-200 mb-4 overflow-y-auto cuerpocorreo" style="max-height:500px;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Edit sit?
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded float-right">responder</button>
+            </div>
+            <form class="hidden" id="formulario_correo">
+                <input type="text" placeholder="Para" id="correopara" class="w-full px-2 py-1 border border-gray-400 rounded mb-2">
+                <input type="text" placeholder="Asunto" id="correoasunto" class="w-full px-2 py-1 border border-gray-400 rounded mb-2">
+                <textarea name="" id="correocuerpo" placeholder="Mensage"  class="w-full px-2 py-1 border border-gray-400 rounded mb-2 h-[400px]"></textarea>
+                <button type="button" id="botonenviar" type="enviar" class="bg-[#3749EA] hover:bg-blue-700 text-white py-2 px-4 rounded float-right">Enviar</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="../mainpag.js"></script>
+</html>
