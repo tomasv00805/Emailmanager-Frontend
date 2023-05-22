@@ -127,7 +127,7 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
   nombredeusuario.textContent = savedUsername;
   botonsalir.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = principiolinkfront+'index.html';
+    window.location.href = principiolinkfront;
   }
   )
   //funcion para mostrar el formulario_correo cuadno haga clic en el boton con id botonenviarcorreo
