@@ -190,7 +190,7 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
 }
 
 //Cosas que solo se ejecutan en la pagina index.html(login)
-if(window.location.pathname === '/index.html'){
+if(window.location.pathname === 'https://emailmanager-frontend.vercel.app/'){
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if(username.value === '' || password.value === ''){
