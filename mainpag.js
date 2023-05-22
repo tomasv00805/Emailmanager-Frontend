@@ -7,7 +7,8 @@ const loginForm = document.getElementById('login-form');
 const botonsalir = document.getElementById('botonsalir');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
-
+const principiolink = ("https://emailmanager-backend.vercel.app/")
+const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
 
 function cambiarColor(botonPresionado) {
   var botones = document.querySelectorAll('.boton-cambio');
@@ -58,7 +59,7 @@ function handleRoutes(){
   const savedUsername = localStorage.getItem('username');
   const path = window.location.pathname;
   if(path === '/webs/main.html'){
-    fetch("http://localhost:3000/inbox/" + savedUsername)
+    fetch(principiolink+"inbox/" + savedUsername)
       .then(res => res.json())
       .then(data => {
         pintarCorreosrecividos(data);
@@ -68,7 +69,7 @@ function handleRoutes(){
         const savedUsername = localStorage.getItem('username');
         const destinatario = e.target.parentElement.querySelector(".remitente").textContent;
         const asunto = e.target.parentElement.querySelector(".Asunto").textContent;
-        fetch("http://localhost:3000/inbox/" + savedUsername)
+        fetch(principiolink +"inbox/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
@@ -85,7 +86,7 @@ function handleRoutes(){
       );
   }
   if(path === '/webs/sent.html'){
-    fetch("http://localhost:3000/sent/" + savedUsername)
+    fetch(principiolink+"sent/" + savedUsername)
       .then(res => res.json())
       .then(data => {
         pintarCorreosenviados(data);
@@ -99,7 +100,7 @@ function handleRoutes(){
 
         console.log(destinatarioArray);
         const asunto = e.target.parentElement.querySelector(".Asunto").textContent;
-        fetch("http://localhost:3000/sent/" + savedUsername)
+        fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
@@ -126,7 +127,7 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
   nombredeusuario.textContent = savedUsername;
   botonsalir.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = 'http://localhost:5500/index.html';
+    window.location.href = principiolinkfront+'index.html';
   }
   )
   //funcion para mostrar el formulario_correo cuadno haga clic en el boton con id botonenviarcorreo
@@ -146,7 +147,7 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
     const asunto = document.getElementById('correoasunto').value;
     const cuerpo = document.getElementById('correocuerpo').value;
     const savedUsername = localStorage.getItem('username');
-    fetch('http://localhost:3000/send', {
+    fetch(principiolink+'send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -176,14 +177,14 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
   const botonbandejaentrada = document.getElementById('botonbandejaentrada');
   botonbandejaentrada.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = 'http://localhost:5500/webs/main.html';
+    window.location.href = principiolinkfront+'webs/main.html';
   }
   )
   //al oprimir el boton con la id botonbandejaenviados la pagina se direcciona a la bandeja de entrada
   const botonbandejaenviados = document.getElementById('botonbandejaenviados');
   botonbandejaenviados.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = 'http://localhost:5500/webs/sent.html';
+    window.location.href = principiolinkfront+'webs/sent.html';
   }
   )
 }
@@ -195,7 +196,7 @@ if(window.location.pathname === '/index.html'){
     if(username.value === '' || password.value === ''){
       alert('Por favor, rellene todos los campos');
     }else{
-      fetch('http://localhost:3000/login', {
+      fetch(principiolink+'login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -211,7 +212,7 @@ if(window.location.pathname === '/index.html'){
             alert(data.error);
           }else{
             localStorage.setItem('username', username.value);
-            window.location.href = 'http://localhost:5500/webs/main.html';
+            window.location.href = principiolinkfront+'webs/main.html';
           }
         })
     }
