@@ -212,7 +212,7 @@ if(window.location.pathname === '/index.html'){
             alert(data.error);
           }else{
             localStorage.setItem('username', username.value);
-            window.location.href = principiolinkfront+'webs/main.html';
+            window.location.href = "https://emailmanager-frontend.vercel.app/webs/main.html";
           }
         })
     }
