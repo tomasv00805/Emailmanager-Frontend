@@ -35,7 +35,7 @@ export class Iterator {
         let nuevalista = [];
         let i = 0;
         while (i < lista.length) {
-            if (lista[i].this.coleccion.getCampo().includes(filtro)) {
+            if (lista[i][this.coleccion.getCampo()].includes(filtro)) {
                 nuevalista.push(lista[i]);
             }
             i += 1;
