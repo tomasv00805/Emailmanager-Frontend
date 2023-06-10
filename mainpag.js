@@ -66,7 +66,8 @@ function handleRoutes(){
       .then(data => {
         var colection = new Collection();
         colection.setitems(data);
-        colection.setfiltro("cpz");
+        colection.setfiltro("juli");
+        colection.setCampo("from");
         const iterador = colection.getIterator();
         while (iterador.valid()) {
           const correo = iterador.next();

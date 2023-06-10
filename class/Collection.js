@@ -4,6 +4,14 @@ export class Collection {
     constructor() {
         this.items = [];
         this.filtro = "";
+        this.campo = "";
+    }
+
+    setCampo(campo) {
+        this.campo = campo;
+    }
+    getCampo() {
+        return this.campo;
     }
 
     setitems(lista) {
