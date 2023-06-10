@@ -28,7 +28,7 @@ export class Iterator {
     }
 
     valid() {
-        return this.position < this.coleccion.getCount();
+        return this.position < this.coleccion.getcount();
     }
 
     filtrar(lista, filtro) {
