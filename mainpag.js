@@ -9,7 +9,7 @@ let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
-import Collection from './Collection.js';
+import Collection from './class/Collection.js';
 let colection = new Collection();
 
 function cambiarColor(botonPresionado) {
