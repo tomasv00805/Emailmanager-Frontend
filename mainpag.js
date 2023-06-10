@@ -12,17 +12,6 @@ const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
 //import { Collection } from './class/Collection.js';
 
 
-function cambiarColor(botonPresionado) {
-  var botones = document.querySelectorAll('.boton-cambio');
-  botones.forEach(function(boton) {
-    if (boton !== botonPresionado) {
-      boton.classList.remove('bg-red-500');
-    }
-  });
-  botonPresionado.classList.toggle('bg-red-500');
-}
-
-
 
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
