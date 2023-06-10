@@ -211,10 +211,13 @@ if(window.location.pathname === '/'){
           if(data.error){
             alert(data.error);
           }else{
-            localStorage.setItem('username', username.value);
+            data.forEach(user => {
+              if(user.username === username.value || user.email === username.value){
+                localStorage.setItem('username', user.username);
+              }
             window.location.href = "https://emailmanager-frontend.vercel.app/webs/main.html";
-          }
-        })
+          });
+        }})
     }
   })
 }
