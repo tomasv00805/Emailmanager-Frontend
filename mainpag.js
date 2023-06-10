@@ -63,14 +63,15 @@ function handleRoutes(){
     fetch(principiolink+"inbox/" + savedUsername)
       .then(res => res.json())
       .then(data => {
-        /*colection.setitems(data);
+        var colection = new Collection();
+        colection.setitems(data);
         colection.setfiltro("hola");
         const iterador = colection.getIterator();
         while (iterador.valid()) {
           const correo = iterador.next();
           console.log(correo);
-        }*/
-         pintarCorreosrecividos(data);
+        }
+         //pintarCorreosrecividos(data);
       });
       //funcion para mostrar el correo seleccionado al hacer click en un correo
       correo.addEventListener('click', (e) => {
@@ -229,3 +230,69 @@ if(window.location.pathname === '/'){
 
 
 window.addEventListener('DOMContentLoaded', handleRoutes);
+
+
+// Patrones de diceño utilizados ----------------------------------------------------------------------------------------------------------------------------
+var Collection = /** @class */ (function () {
+    function Collection() {
+        this.items = [];
+        this.filtro = "";
+    }
+    Collection.prototype.setItems = function (lista) {
+        this.items = lista;
+    };
+    Collection.prototype.setFiltro = function (filtro) {
+        this.filtro = filtro;
+    };
+    Collection.prototype.getItems = function () {
+        return this.items;
+    };
+    Collection.prototype.getCount = function () {
+        return this.items.length;
+    };
+    Collection.prototype.getIterator = function () {
+        return new iterator_1.Iterator(this);
+    };
+    return Collection;
+}());
+
+var Iterator = /** @class */ (function () {
+  function Iterator(coleccion) {
+      // Guarda la posicion actual
+      this.position = 0;
+      this.coleccion = coleccion;
+      if (this.coleccion.filtro != "") {
+          this.filtrar(this.coleccion.getItems(), this.coleccion.filtro);
+      }
+  }
+  Iterator.prototype.rewind = function () {
+      this.position = 0;
+  };
+  Iterator.prototype.current = function () {
+      return this.coleccion.getItems()[this.position];
+  };
+  Iterator.prototype.key = function () {
+      return this.position;
+  };
+  Iterator.prototype.next = function () {
+      var item = this.current();
+      this.position += 1;
+      return item;
+  };
+  Iterator.prototype.valid = function () {
+      return this.position < this.coleccion.getcount();
+  };
+  Iterator.prototype.filtrar = function (lista, filtro) {
+      var nuevalista = [];
+      var i = 0;
+      while (i <= lista.length) {
+          if (lista[i].body.includes(filtro)) {
+              nuevalista.push(lista[i]);
+          }
+          console.log(i);
+          i += 1;
+      }
+      this.coleccion.setitems(nuevalista);
+  };
+  return Iterator;
+}());
