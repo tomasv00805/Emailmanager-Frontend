@@ -64,6 +64,7 @@ function handleRoutes(){
       .then(data => {
         pintarCorreosrecividos(data);
       });
+      //funcion para mostrar el correo seleccionado al hacer click en un correo
       correo.addEventListener('click', (e) => {
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
@@ -170,7 +171,6 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
       })
   }
   )
-  //funcion para mostrar que cuando haga click en un correo se muestre el correo completo comparando el remitente y asunto
   
   
   //al oprimir el boton con la id botonbandejaentrada la pagina se direcciona a la bandeja de entrada
