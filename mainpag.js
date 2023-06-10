@@ -9,8 +9,7 @@ let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
-import { Collection } from './class/Collection.js';
-let colection = new Collection();
+
 
 function cambiarColor(botonPresionado) {
   var botones = document.querySelectorAll('.boton-cambio');
@@ -64,14 +63,14 @@ function handleRoutes(){
     fetch(principiolink+"inbox/" + savedUsername)
       .then(res => res.json())
       .then(data => {
-        colection.setitems(data);
+        /*colection.setitems(data);
         colection.setfiltro("hola");
         const iterador = colection.getIterator();
         while (iterador.valid()) {
           const correo = iterador.next();
           console.log(correo);
-        }
-         // pintarCorreosrecividos(data);
+        }*/
+         pintarCorreosrecividos(data);
       });
       //funcion para mostrar el correo seleccionado al hacer click en un correo
       correo.addEventListener('click', (e) => {
