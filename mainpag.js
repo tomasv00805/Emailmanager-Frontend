@@ -64,7 +64,7 @@ function handleRoutes(){
     fetch(principiolink+"inbox/" + savedUsername)
       .then(res => res.json())
       .then(data => {
-        var colection = new Collection();
+        /*var colection = new Collection();
         colection.setitems(data);
         colection.setfiltro("chau");
         colection.setCampo("body");
@@ -72,8 +72,8 @@ function handleRoutes(){
         while (iterador.valid()) {
           const correo = iterador.next();
           console.log(correo);
-        }
-         //pintarCorreosrecividos(data);
+        }*/
+         pintarCorreosrecividos(data);
       });
       //funcion para mostrar el correo seleccionado al hacer click en un correo
       correo.addEventListener('click', (e) => {
