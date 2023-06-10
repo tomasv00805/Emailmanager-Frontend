@@ -41,6 +41,6 @@ export class Iterator {
             console.log(i);
             i += 1;
         }
-        this.coleccion.setItems(nuevalista);
+        this.coleccion.setitems(nuevalista);
     }
 }
