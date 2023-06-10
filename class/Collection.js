@@ -1,29 +1,28 @@
-"use strict";
-exports.__esModule = true;
-exports.Collection = void 0;
-var iterator_1 = require("./iterator");
-// Las colecciones concretas proveen de uno o mas metodos para llamar a iteradores compatibles
-var Collection = /** @class */ (function () {
-    function Collection() {
+import { Iterator } from './iterator.js';
+
+export class Collection {
+    constructor() {
         this.items = [];
         this.filtro = "";
     }
-    Collection.prototype.setitems = function (lista) {
+
+    setitems(lista) {
         this.items = lista;
-    };
-    Collection.prototype.setfiltro = function (filtro) {
+    }
+
+    setfiltro(filtro) {
         this.filtro = filtro;
-    };
-    Collection.prototype.getItems = function () {
+    }
+
+    getItems() {
         return this.items;
-    };
-    Collection.prototype.getcount = function () {
+    }
+
+    getcount() {
         return this.items.length;
-    };
-    Collection.prototype.getIterator = function () {
-        return new iterator_1.Iterator(this);
-    };
-    return Collection;
-}());
-exports.Collection = Collection;
-//colecion------- colecion.setitems(data); coleccion.setfiltro("hola"); iterador= coleccion.getIterator(); 
+    }
+
+    getIterator() {
+        return new Iterator(this);
+    }
+} 

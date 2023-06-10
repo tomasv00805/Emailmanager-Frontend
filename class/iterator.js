@@ -1,45 +1,46 @@
-"use strict";
-exports.__esModule = true;
-exports.Iterator = void 0;
-// Iterador concreto que implementa varios algoritmos de iteracion
-var Iterator = /** @class */ (function () {
-    function Iterator(coleccion) {
-        // Guarda la posicion actual
-        this.position = 0;
+import { Collection } from './Collection.js';
+
+export class Iterator {
+    constructor(coleccion) {
         this.coleccion = coleccion;
-        if (this.coleccion.filtro != "") {
+        this.position = 0;
+        if (this.coleccion.filtro !== "") {
             this.filtrar(this.coleccion.getItems(), this.coleccion.filtro);
         }
     }
-    Iterator.prototype.rewind = function () {
+
+    rewind() {
         this.position = 0;
-    };
-    Iterator.prototype.current = function () {
+    }
+
+    current() {
         return this.coleccion.getItems()[this.position];
-    };
-    Iterator.prototype.key = function () {
+    }
+
+    key() {
         return this.position;
-    };
-    Iterator.prototype.next = function () {
-        var item = this.current();
+    }
+
+    next() {
+        const item = this.current();
         this.position += 1;
         return item;
-    };
-    Iterator.prototype.valid = function () {
-        return this.position < this.coleccion.getcount();
-    };
-    Iterator.prototype.filtrar = function (lista, filtro) {
-        var nuevalista = [];
-        var i = 0;
-        while (i <= lista.length) {
+    }
+
+    valid() {
+        return this.position < this.coleccion.getCount();
+    }
+
+    filtrar(lista, filtro) {
+        let nuevalista = [];
+        let i = 0;
+        while (i < lista.length) {
             if (lista[i].body.includes(filtro)) {
                 nuevalista.push(lista[i]);
             }
             console.log(i);
             i += 1;
         }
-        this.coleccion.setitems(nuevalista);
-    };
-    return Iterator;
-}());
-exports.Iterator = Iterator;
+        this.coleccion.setItems(nuevalista);
+    }
+}
