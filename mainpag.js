@@ -212,7 +212,7 @@ if(window.location.pathname === '/'){
             alert(data.error);
           }else{
             data.forEach(user => {
-              if(user.username === username.value || user.email === username.value){
+              if(){
                 localStorage.setItem('username', user.username);
               }
             window.location.href = "https://emailmanager-frontend.vercel.app/webs/main.html";
