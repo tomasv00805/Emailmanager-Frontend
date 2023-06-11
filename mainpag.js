@@ -120,6 +120,12 @@ function handleRoutes(){
             });
           });
         }
+        if(e.target.classList.contains('BotondeFavoritos')){
+          e.preventDefault();
+          const savedUsername = localStorage.getItem('username');
+          const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+          guardarenfavoritos(id);
+          }
     }
       );
       //Aca lo que hacemos es filtrar los correos que se muestran en pantalla dependiendo del filtro y el campo que se elija 
