@@ -29,7 +29,8 @@ const pintarCorreosrecividos = data => {
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
     templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
-    templateCorreo.querySelector(".botonfavoritos").onclick = guardarenfavoritos(correo.id);
+    //agregame la funcion onclick al boton de favoritos
+    templateCorreo.querySelector(".botonfavoritos").onclick = function() {guardarenfavoritos(correo.id)};
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
