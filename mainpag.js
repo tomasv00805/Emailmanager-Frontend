@@ -18,13 +18,15 @@ let iterador = coleccion.getIterator();
 function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
+  //constante que guarda el id del correo que sea de tipo int y no string
+  const idint = parseInt(id);
   fetch(principiolink+"favorite/"+savedUsername, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      emailId: id
+      emailId: idint
     })
   })
     .then(res => res.json())
