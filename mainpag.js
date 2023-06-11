@@ -128,6 +128,41 @@ function handleRoutes(){
           });
       }
       );
+    //funcion para agregar un correo a favoritos
+    const botonfavoritos = document.getElementById('botonfavoritos');
+    botonfavoritos.addEventListener('click', (e) => {
+      e.preventDefault();
+      const savedUsername = localStorage.getItem('username');
+      const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+      fetch(principiolink +"inbox/" + savedUsername)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(correo => {
+            if(id == correo.id){
+              fetch(principiolink+'favorite', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  from: correo.from,
+                  to: correo.to,
+                  subject: correo.subject,
+                  body: correo.body
+                })
+              })
+                .then(res => res.json())
+                .then(data => {
+                  if(data.error){
+                    alert(data.error);
+                  }else{
+                    alert('Correo agregado a favoritos');
+                  }
+                })
+            }
+          });
+        });
+    }
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
@@ -188,7 +223,7 @@ function handleRoutes(){
 
   }
 }
-//Cosas que solo se ejecutan en la pagina de main y send
+//Cosas que solo se ejecutan en la pagina de main y send y favoritos
 if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html'){
   const savedUsername = localStorage.getItem('username');
   nombredeusuario.textContent = savedUsername;
