@@ -47,4 +47,19 @@ export class FilterByBodyStrategy extends FilterStrategy {
   }
 }
 
+// Contexto
+export class EmailFilter {
+  constructor(strategy) {
+    this.strategy = strategy;
+  }
+
+  setStrategy(strategy) {
+    this.strategy = strategy;
+  }
+
+  filter(emails) {
+    return this.strategy.filterEmails(emails);
+  }
+}
+
 
