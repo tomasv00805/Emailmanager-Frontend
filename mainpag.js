@@ -215,6 +215,7 @@ function handleRoutes(){
       }
       );
       correo.addEventListener('click', (e) => {
+        if(e.target.classList.contains('remitente')){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
         const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
@@ -230,9 +231,17 @@ function handleRoutes(){
                 templateCorreoseleccionado.classList.remove("hidden");
                 formulario_correo.classList.add("hidden");
               }
-              
+
             });
           });
+       }
+       if(e.target.classList.contains('BotondeFavoritos')){
+        e.preventDefault();
+        const savedUsername = localStorage.getItem('username');
+        const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+        console.log(id);
+        guardarenfavoritos(id);
+        }
       }
       );
       const botonfiltrar = document.getElementById('botonfiltrar');
