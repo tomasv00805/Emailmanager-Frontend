@@ -12,16 +12,16 @@
         <button class="px-3 py-2 text-gray-300 bg-transparent border border-gray-400 rounded hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white" type="exit" id="botonsalir">Salir</button>
         <h1 class="text-xl font-semibold text-gray-300" id="nombreusermain">Nombre</h1>
     </header>
-    <div class="flex flex-row h-screen">
-        <div class="basis-2/12">
-                <div class="flex flex-col">
-                    <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" >Enviar correo</button>
-                    <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" >bandeja de entrada</button>
-                    <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" >bandeja de enviados</button>
-                    <button id="botonbandejafavoritos" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de favoritos</button>
-                </div>
+    <div class="flex flex-col sm:flex-row h-screen">
+        <div class="sm:w-2/12">
+            <div class="flex flex-col">
+                <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">Enviar correo</button>
+                <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de entrada</button>
+                <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de enviados</button>
+                <button id="botonbandejafavoritos" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de favoritos</button>
+            </div>
         </div>
-        <div class="basis-3/12 flex flex-col ">
+        <div class="sm:w-3/12 flex flex-col">
             <!-- Nombre -->
             <div class="p-4 text-2xl font-bold text-gray-300">
                 Bandeja de enviados
@@ -29,13 +29,13 @@
                 
             <!-- Input de búsqueda y botón -->
             <div class="flex p-4">
-                <select id="campo"> 
-                    <option value="body">body</option> 
-                    <option value="to">to</option> 
-                    <option value="subject">subject</option> 
+                <select id="campo" class="w-1/3 sm:w-auto">
+                    <option value="body">body</option>
+                    <option value="to">to</option>
+                    <option value="subject">subject</option>
                 </select>
-              <input type="text" class="w-full px-2 py-1 border border-gray-400 rounded-l focus:outline-none" id="filtro" placeholder="Buscar">
-              <button class="px-4 py-1 bg-[#3749EA] text-white font-bold rounded-r" id="botonfiltrar">Buscar</button>
+                <input type="text" class="w-2/3 sm:w-auto px-2 py-1 border border-gray-400 rounded-l focus:outline-none" id="filtro" placeholder="Buscar">
+                <button class="px-4 py-1 bg-[#3749EA] text-white font-bold rounded-r">Buscar</button>
             </div>
               
             <!-- Scroll -->
@@ -51,7 +51,7 @@
                 </template>
             </div>
         </div>
-        <div class="basis-7/12 p-4 border border-gray-800" id="correo_seleccionado">
+        <div class="sm:w-7/12 p-4 border border-gray-800" id="correo_seleccionado">
             <div class="hidden" id="template_correoseleccionado">  
                 <div class="text-lg text-gray-100 font-bold mb-2 nombrecorreo">Nombre de la persona</div>
                 <div class="text-gray-400 mb-2 correocorreo">correo@ejemplo.com</div>
@@ -62,14 +62,13 @@
                 <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded float-right">responder</button>
             </div>
             <form class="hidden" id="formulario_correo">
-                <input type="text" placholder="Para" id="correopara" class="w-full px-2 py-1 border border-gray-400 rounded mb-2">
+                <input type="text" placeholder="Para" id="correopara" class="w-full px-2 py-1 border border-gray-400 rounded mb-2">
                 <input type="text" placeholder="Asunto" id="correoasunto" class="w-full px-2 py-1 border border-gray-400 rounded mb-2">
-                <textarea name="" id="correocuerpo" placeholder="Mensage"  class="w-full px-2 py-1 border border-gray-400 rounded mb-2 h-[400px]"></textarea>
+                <textarea name="" id="correocuerpo" placeholder="Mensaje" class="w-full px-2 py-1 border border-gray-400 rounded mb-2 h-[400px]"></textarea>
                 <button type="button" id="botonenviar" type="enviar" class="bg-[#3749EA] hover:bg-blue-700 text-white py-2 px-4 rounded float-right">Enviar</button>
             </form>
         </div>
     </div>
-    <!-- !-->
+    <script type="module" src="../mainpag.js"></script>
 </body>
-<script type="module" src="../mainpag.js"></script>
 </html>
