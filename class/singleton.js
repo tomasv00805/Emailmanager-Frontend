@@ -18,7 +18,7 @@ export class Singleton {
     Singleton.instance = this;
   }
 
-  getEmail() {
+  getEmailFilter() {
     return this.emailFilter;
   }
 
