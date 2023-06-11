@@ -121,15 +121,13 @@ function handleRoutes(){
       correo.addEventListener('click', (e) => {
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
-        const destinatario = e.target.parentElement.querySelector(".remitente").textContent;
-        const destinatarioArray = destinatario.split(',');
-        const asunto = e.target.parentElement.querySelector(".Asunto").textContent;
+        const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
         fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
              
-              if(destinatarioArray === correo.to && correo.subject === asunto){
+              if(correo.id === id){
                 templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.to;
                 templateCorreoseleccionado.querySelector(".asuntocorreo").textContent = correo.subject;
                 templateCorreoseleccionado.querySelector(".cuerpocorreo").textContent = correo.body;
@@ -271,17 +269,7 @@ if(window.location.pathname === '/'){
 
 window.addEventListener('DOMContentLoaded', handleRoutes);
 
-
-// Patrones de diceño utilizados ----------------------------------------------------------------------------------------------------------------------------
-/*var colection = new Collection();
-        colection.setitems(data);
-        colection.setfiltro("chau");
-        colection.setCampo("body");
-        const iterador = colection.getIterator();
-        while (iterador.valid()) {
-          const correo = iterador.next();
-          console.log(correo);
-        }*/
+//funcion para filtrar los correos dependiendo del campo y el filtro
 function filtrar(campo, filtro, data){
   coleccion.setitems(data)
   if(campo === "from"){
