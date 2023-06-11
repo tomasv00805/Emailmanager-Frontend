@@ -27,7 +27,7 @@ const pintarCorreosrecividos = data => {
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
-    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;//aca te quedaste boludo
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -59,7 +59,7 @@ const pintarCorreosenviados = data => {
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
-    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;//aca te quedaste boludo
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -188,7 +188,7 @@ function handleRoutes(){
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send
-if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html'){
+if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favorito.html'){
   const savedUsername = localStorage.getItem('username');
   nombredeusuario.textContent = savedUsername;
   botonsalir.addEventListener('click', (e) => {
@@ -251,6 +251,14 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
     window.location.href = principiolinkfront+'webs/sent.html';
   }
   )
+  //al oprimir el boton con la id botonbandejafavoritos la pagina se direcciona a la bandeja de entrada
+  const botonbandejafavoritos = document.getElementById('botonbandejafavoritos');
+  botonbandejafavoritos.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = principiolinkfront+'webs/favoritos.html';
+  }
+  )
+
 }
 
 //Cosas que solo se ejecutan en la pagina index.html(login)
