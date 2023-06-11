@@ -41,13 +41,14 @@ function guardarenfavoritos(id){
 function eliminardefavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
+  const idint = parseInt(id);
   fetch(principiolink+"favorite/"+savedUsername, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      emailId: id
+      emailId: idint
     })
   })
     .then(res => res.json())
@@ -71,7 +72,7 @@ function obtenerfavoritos(){
     })
 }
 //funcion que pinte los correos en la pagina de favoritos
-function pintarCorreosfavoritos(data){
+const pintarCorreosfavoritos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   data.forEach(correo => {
     //se cargan los datos del correo en el template
