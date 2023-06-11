@@ -122,11 +122,11 @@ function handleRoutes(){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
         const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+        console.log(id);
         fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
-             
               if(correo.id === id){
                 templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.to;
                 templateCorreoseleccionado.querySelector(".asuntocorreo").textContent = correo.subject;
