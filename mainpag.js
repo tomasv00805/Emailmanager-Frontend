@@ -10,8 +10,6 @@ let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
 import { EmailFilter, Singleton } from './class/singleton.js';
-
-
 let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
@@ -94,7 +92,7 @@ function handleRoutes(){
           .then(res => res.json())
           .then(data => {
             let listafiltrada = filtrar(campo, filtro, data);
-            
+            correo.innerHTML = "";
             pintarCorreosrecividos(listafiltrada);
           });
       }
