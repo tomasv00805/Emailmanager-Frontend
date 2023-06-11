@@ -124,6 +124,7 @@ function handleRoutes(){
           e.preventDefault();
           const savedUsername = localStorage.getItem('username');
           const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+          console.log(id);
           guardarenfavoritos(id);
           }
     }
