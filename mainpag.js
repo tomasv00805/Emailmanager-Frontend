@@ -127,9 +127,10 @@ function handleRoutes(){
           });
       }
       );
-    //funcion para agregar un correo a favoritos
-    const botonfavoritos = document.getElementById('botonfavoritos');
-    botonfavoritos.addEventListener('click', (e) => {
+    //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
+    
+      const botonfavoritos = document.getElementsByClassName('botonfavoritos');
+      botonfavoritos.addEventListener('click', (e) => {
       e.preventDefault();
       const savedUsername = localStorage.getItem('username');
       const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
