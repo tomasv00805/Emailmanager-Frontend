@@ -134,6 +134,7 @@ function handleRoutes(){
       for(let i = 0; i < botonfavoritos.length; i++){
         console.log(botonfavoritos[i]);
   }
+  }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
       .then(res => res.json())
