@@ -129,11 +129,6 @@ function handleRoutes(){
       }
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
-    const botonfavoritos = document.getElementsByClassName('.botonfavoritos');
-    botonfavoritos.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log(botonfavoritos.dataset.id);
-    })
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
@@ -297,7 +292,26 @@ if(window.location.pathname === '/'){
     }
   })
 }
-
+function guardarenfavoritos(id){
+  const savedUsername = localStorage.getItem('username');
+  fetch(principiolink+"favorite/"+ savedUsername, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: id
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        alert(data.error);
+      }else{
+        alert('Correo agregado a favoritos');
+      }
+    })
+}
 
 window.addEventListener('DOMContentLoaded', handleRoutes);
 
