@@ -29,6 +29,11 @@ const pintarCorreosrecividos = data => {
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
     templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
+    templateCorreo.querySelector(".botonfavoritos").addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = e.target.dataset.id;
+      guardarenfavoritos(id);
+    }
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -128,12 +133,7 @@ function handleRoutes(){
           });
       }
       );
-    //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
-    const botonfavoritos = document.querySelector('#BotondeFavoritos');
-    function hagoclic(){
-      alert('hola');
-    }
-    botonfavoritos.addEventListener('click', hagoclic());
+    //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos   
 
   }
   if(path === '/webs/sent.html'){
@@ -299,6 +299,7 @@ if(window.location.pathname === '/'){
   })
 }
 function guardarenfavoritos(id){
+  console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
   fetch(principiolink+"favorite/"+ savedUsername, {
     method: 'POST',
