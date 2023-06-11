@@ -1,4 +1,4 @@
-class Iterator {
+export class Iterator {
     constructor(coleccion) {
         this.coleccion = coleccion;
         this.position = 0;
@@ -31,6 +31,4 @@ class Iterator {
     }
 }
 
-module.exports = {
-    Iterator
-};
+

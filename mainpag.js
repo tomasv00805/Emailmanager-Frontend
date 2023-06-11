@@ -9,8 +9,12 @@ let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
-//import { Collection } from './class/Collection.js';
+import { EmailFilter, Singleton } from './class/singleton.js';
 
+
+let singleton = new Singleton();
+let coleccion = singleton.getCollection();
+let iterador = coleccion.getIterator();
 
 
 const pintarCorreosrecividos = data => {
@@ -21,6 +25,8 @@ const pintarCorreosrecividos = data => {
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;//aca te quedaste boludo
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -53,15 +59,6 @@ function handleRoutes(){
     fetch(principiolink+"inbox/" + savedUsername)
       .then(res => res.json())
       .then(data => {
-        /*var colection = new Collection();
-        colection.setitems(data);
-        colection.setfiltro("chau");
-        colection.setCampo("body");
-        const iterador = colection.getIterator();
-        while (iterador.valid()) {
-          const correo = iterador.next();
-          console.log(correo);
-        }*/
          pintarCorreosrecividos(data);
       });
       //funcion para mostrar el correo seleccionado al hacer click en un correo
@@ -82,6 +79,23 @@ function handleRoutes(){
                 formulario_correo.classList.add("hidden");
               }
             });
+          });
+      }
+      );
+      //funcion para filtrar los correos
+      const botonfiltrar = document.getElementById('botonfiltrar');
+      botonfiltrar.addEventListener('click', (e) => {
+        e.preventDefault();
+        const filtro = document.getElementById('filtro').value;
+        const campo = document.getElementById('campo').value;
+        const savedUsername = localStorage.getItem('username');
+        console.log(campo)
+        fetch(principiolink+"inbox/" + savedUsername)
+          .then(res => res.json())
+          .then(data => {
+            let listafiltrada = filtrar(campo, filtro, data);
+            
+            pintarCorreosrecividos(listafiltrada);
           });
       }
       );
@@ -122,7 +136,6 @@ function handleRoutes(){
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send
-
 if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html'){
   const savedUsername = localStorage.getItem('username');
   nombredeusuario.textContent = savedUsername;
@@ -171,7 +184,6 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
       })
   }
   )
-  
   
   //al oprimir el boton con la id botonbandejaentrada la pagina se direcciona a la bandeja de entrada
   const botonbandejaentrada = document.getElementById('botonbandejaentrada');
@@ -224,3 +236,48 @@ window.addEventListener('DOMContentLoaded', handleRoutes);
 
 
 // Patrones de diceño utilizados ----------------------------------------------------------------------------------------------------------------------------
+/*var colection = new Collection();
+        colection.setitems(data);
+        colection.setfiltro("chau");
+        colection.setCampo("body");
+        const iterador = colection.getIterator();
+        while (iterador.valid()) {
+          const correo = iterador.next();
+          console.log(correo);
+        }*/
+function filtrar(campo, filtro, data){
+  coleccion.setitems(data)
+  if(campo === "from"){
+    const filterByFrom = singleton.getFilterByFromStrategy();
+    filterByFrom.setfilter(filtro);
+    const filter = new EmailFilter(filterByFrom);
+    coleccion.setitems(filter.filter(coleccion.getItems()))
+    iterador.rewind();
+    return coleccion.getItems();
+  }
+  if(campo === "to"){
+    const filterByTo = singleton.getFilterByToStrategy();
+    filterByTo.setfilter(filtro);
+    const filter = new EmailFilter(filterByTo);
+    coleccion.setitems(filter.filter(coleccion.getItems()))
+    iterador.rewind();
+    return coleccion.getItems();
+  }
+  if(campo === "subject"){
+    const filterBySubject = singleton.getFilterBySubjectStrategy();
+    filterBySubject.setfilter(filtro);
+    const filter = new EmailFilter(filterBySubject);
+    coleccion.setitems(filter.filter(coleccion.getItems()))
+    iterador.rewind();
+    return coleccion.getItems();
+  }
+  if(campo === "body"){
+    const filterByBody = singleton.getFilterByBodyStrategy();
+    filterByBody.setfilter(filtro);
+    const filter = new EmailFilter(filterByBody);
+    coleccion.setitems(filter.filter(coleccion.getItems()))
+    iterador.rewind();
+    return coleccion.getItems();
+  }
+}
+

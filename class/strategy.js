@@ -1,10 +1,10 @@
 // Interfaz Strategy
-class FilterStrategy {
+export class FilterStrategy {
   filterEmails(emails) {}
 }
 
 // Estrategia concreta para filtrar por campo "to"
-class FilterByToStrategy extends FilterStrategy {
+export class FilterByToStrategy extends FilterStrategy {
   setfilter(to) {
     this.to = to
   }
@@ -15,7 +15,7 @@ class FilterByToStrategy extends FilterStrategy {
 }
 
 // Estrategia concreta para filtrar por campo "from"
-class FilterByFromStrategy extends FilterStrategy {
+export class FilterByFromStrategy extends FilterStrategy {
   setfilter(from) {
     this.from = from
   }
@@ -26,7 +26,7 @@ class FilterByFromStrategy extends FilterStrategy {
 }
 
 // Estrategia concreta para filtrar por campo "subject"
-class FilterBySubjectStrategy extends FilterStrategy {
+export class FilterBySubjectStrategy extends FilterStrategy {
   setfilter(subject) {
     this.subject = subject
   }
@@ -37,7 +37,7 @@ class FilterBySubjectStrategy extends FilterStrategy {
 }
 
 // Estrategia concreta para filtrar por campo "body"
-class FilterByBodyStrategy extends FilterStrategy {
+export class FilterByBodyStrategy extends FilterStrategy {
   setfilter(body) {
     this.body = body
   }
@@ -47,9 +47,4 @@ class FilterByBodyStrategy extends FilterStrategy {
   }
 }
 
-module.exports = {
-    FilterByToStrategy,
-    FilterByFromStrategy,
-    FilterBySubjectStrategy,
-    FilterByBodyStrategy,
-};
+
