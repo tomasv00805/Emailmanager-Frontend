@@ -42,6 +42,8 @@ const pintarCorreosenviados = data => {
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;//aca te quedaste boludo
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
