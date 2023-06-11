@@ -5,6 +5,7 @@ const nombredeusuario = document.getElementById('nombreusermain');
 const templateCorreoseleccionado = document.getElementById('template_correoseleccionado');
 const loginForm = document.getElementById('login-form');
 const botonsalir = document.getElementById('botonsalir');
+const botonfiltrar = document.getElementById('botonfiltrar');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
@@ -99,7 +100,7 @@ function handleRoutes(){
       }
       );
       //Aca lo que hacemos es filtrar los correos que se muestran en pantalla dependiendo del filtro y el campo que se elija 
-      const botonfiltrar = document.getElementById('botonfiltrar');
+      
       botonfiltrar.addEventListener('click', (e) => {
         e.preventDefault();
         const filtro = document.getElementById('filtro').value;
@@ -128,8 +129,7 @@ function handleRoutes(){
       }
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
-    
-      const botonfavoritos = document.getElementsById('botonfavoritos');
+      const botonfavoritos = document.getElementById('botonfavoritos');
       botonfavoritos.addEventListener('click', (e) => {
       e.preventDefault();
       const savedUsername = localStorage.getItem('username');
