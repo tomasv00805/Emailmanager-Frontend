@@ -16,6 +16,7 @@ let iterador = coleccion.getIterator();
 
 
 const pintarCorreosrecividos = data => {
+  console.log (data);
   const templateCorreo = document.getElementById('template-correo').content;
   data.forEach(correo => {
     //se cargan los datos del correo en el template
