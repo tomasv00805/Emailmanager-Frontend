@@ -266,7 +266,13 @@ function handleRoutes(){
       
   }
   if(path === '/webs/favoritos.html'){
-    
+    //aca se pintan los correos favoritos
+    fetch(principiolink+"favorite/" + savedUsername)
+      .then(res => res.json())
+      .then(data => {
+        pintarCorreosfavoritos(data);
+      }
+      );
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send y favoritos
