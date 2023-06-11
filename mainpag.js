@@ -81,14 +81,13 @@ function handleRoutes(){
           });
       }
       );
-      //funcion para filtrar los correos
+      //Aca lo que hacemos es filtrar los correos que se muestran en pantalla dependiendo del filtro y el campo que se elija 
       const botonfiltrar = document.getElementById('botonfiltrar');
       botonfiltrar.addEventListener('click', (e) => {
         e.preventDefault();
         const filtro = document.getElementById('filtro').value;
         const campo = document.getElementById('campo').value;
         const savedUsername = localStorage.getItem('username');
-        console.log(campo)
         fetch(principiolink+"inbox/" + savedUsername)
           .then(res => res.json())
           .then(data => {
@@ -124,14 +123,11 @@ function handleRoutes(){
         const savedUsername = localStorage.getItem('username');
         const destinatario = e.target.parentElement.querySelector(".remitente").textContent;
         const destinatarioArray = destinatario.split(',');
-
-        console.log(destinatarioArray);
         const asunto = e.target.parentElement.querySelector(".Asunto").textContent;
         fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
-              console.log(correo.to);
              
               if(destinatarioArray === correo.to && correo.subject === asunto){
                 templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.to;
@@ -145,6 +141,35 @@ function handleRoutes(){
           });
       }
       );
+      const botonfiltrar = document.getElementById('botonfiltrar');
+      botonfiltrar.addEventListener('click', (e) => {
+        e.preventDefault();
+        const filtro = document.getElementById('filtro').value;
+        const campo = document.getElementById('campo').value;
+        const savedUsername = localStorage.getItem('username');
+        fetch(principiolink+"sent/" + savedUsername)
+        .then(res => res.json())
+          .then(data => {
+            let listafiltrada = filtrar(campo, filtro, data);
+            //transfomrame el listafiltrada en un json
+            listafiltrada = JSON.stringify(listafiltrada);
+            listafiltrada = JSON.parse(listafiltrada);
+            correo.innerHTML = `
+            <template id="template-correo">
+                    <div class="correo p-4 bg-[#303030] hover:bg-[#404040]">
+                        <div class="font-bold text-gray-300 remitente">Remitente</div>
+                        <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
+                        <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
+                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 botonfavoritos">fav</button>
+                    </div>   
+                </template>
+            `;
+            console.log(listafiltrada);
+            pintarCorreosenviados(listafiltrada);
+          });
+      }
+      );
+
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send
