@@ -293,7 +293,7 @@ if(window.location.pathname === '/'){
     }
   })
 }
-function guardarenfavoritos(id){
+export function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
   fetch(principiolink+"favorite/"+ savedUsername, {
