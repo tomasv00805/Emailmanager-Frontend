@@ -52,9 +52,7 @@ const pintarCorreosrecividos = data => {
 };
 const pintarCorreosenviados = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  coleccion.setitems(data);
-  iterador.rewind();
-  while(iterador.valid()){
+  data.forEach(correo => {
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.to;
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
@@ -66,7 +64,7 @@ const pintarCorreosenviados = data => {
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
     fragment.appendChild(clone);
-  };
+  });
   //cargo el fragment en el div donde van a estar los correos
   correo.appendChild(fragment);
 };
