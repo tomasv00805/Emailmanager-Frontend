@@ -16,9 +16,11 @@ let iterador = coleccion.getIterator();
 
 
 const pintarCorreosrecividos = data => {
-  console.log (data);
   const templateCorreo = document.getElementById('template-correo').content;
-  data.forEach(correo => {
+  coleccion.setitems(data);
+  iterador.rewind();
+  while(iterador.valid()){
+    const correo = iterador.next();
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.from;
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
@@ -30,13 +32,29 @@ const pintarCorreosrecividos = data => {
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
     fragment.appendChild(clone);
-  });
+  }
+  //antes de usar patron de diseño
+  /*data.forEach(correo => {
+    //se cargan los datos del correo en el template
+    templateCorreo.querySelector(".remitente").textContent = correo.from;
+    templateCorreo.querySelector(".Asunto").textContent = correo.subject;
+    //que solo se muestren 15 palabras
+    templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;//aca te quedaste boludo
+    //se clona el template para unir todas sus partes
+    const clone = templateCorreo.cloneNode(true);
+    //se agrega el clone al fragment
+    fragment.appendChild(clone);
+  });*/
   //cargo el fragment en el div donde van a estar los correos
   correo.appendChild(fragment);
 };
 const pintarCorreosenviados = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  data.forEach(correo => {
+  coleccion.setitems(data);
+  iterador.rewind();
+  while(iterador.valid()){
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.to;
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
@@ -48,7 +66,7 @@ const pintarCorreosenviados = data => {
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
     fragment.appendChild(clone);
-  });
+  };
   //cargo el fragment en el div donde van a estar los correos
   correo.appendChild(fragment);
 };
@@ -66,13 +84,12 @@ function handleRoutes(){
       correo.addEventListener('click', (e) => {
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
-        const destinatario = e.target.parentElement.querySelector(".remitente").textContent;
-        const asunto = e.target.parentElement.querySelector(".Asunto").textContent;
+        const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
         fetch(principiolink +"inbox/" + savedUsername)
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
-              if(correo.from === destinatario && correo.subject === asunto){
+              if(id == correo.id){
                 templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.from;
                 templateCorreoseleccionado.querySelector(".asuntocorreo").textContent = correo.subject;
                 templateCorreoseleccionado.querySelector(".cuerpocorreo").textContent = correo.body;
