@@ -1,6 +1,6 @@
-const { Iterator } = require('./iterator.js');
+import { Iterator } from './iterator.js';
 
-class Collection {
+export class Collection {
     constructor() {
         this.items = [];
     }
@@ -21,7 +21,3 @@ class Collection {
         return new Iterator(this);
     }
 } 
-
-module.exports = {
-    Collection
-};

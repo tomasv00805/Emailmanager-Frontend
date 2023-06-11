@@ -1,12 +1,7 @@
-import { Collection } from './Collection.js';
-
-export class Iterator {
+class Iterator {
     constructor(coleccion) {
         this.coleccion = coleccion;
         this.position = 0;
-        if (this.coleccion.filtro !== "") {
-            this.filtrar(this.coleccion.getItems(), this.coleccion.filtro);
-        }
     }
 
     rewind() {
@@ -28,18 +23,14 @@ export class Iterator {
     }
 
     valid() {
-        return this.position < this.coleccion.getcount();
-    }
-
-    filtrar(lista, filtro) {
-        let nuevalista = [];
-        let i = 0;
-        while (i < lista.length) {
-            if (lista[i][this.coleccion.getCampo()].includes(filtro)) {
-                nuevalista.push(lista[i]);
-            }
-            i += 1;
+        let res = this.position < this.coleccion.getcount();
+        if (res == false) {
+            this.rewind()
         }
-        this.coleccion.setitems(nuevalista);
+        return res
     }
 }
+
+module.exports = {
+    Iterator
+};
