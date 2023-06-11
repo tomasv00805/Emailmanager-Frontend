@@ -130,13 +130,8 @@ function handleRoutes(){
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
     const botonfavoritos = document.getElementById('BotondeFavoritos');
-    botonfavoritos.addEventListener('click', (e) => {
-      e.preventDefault();
-      const savedUsername = localStorage.getItem('username');
-      const id = e.target.parentElement.querySelector(".#BotondeFavoritos").dataset.id;
-      guardarenfavoritos(id);
-    }
-    );
+    console.log(botonfavoritos);
+    
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
