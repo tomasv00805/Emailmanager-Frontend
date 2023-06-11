@@ -10,7 +10,6 @@ let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
 import { Singleton } from './class/singleton.js';
-import { EmailFilter } from './class/strategy.js';
 let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
@@ -337,7 +336,8 @@ function filtrar(campo, filtro, data){
   if(campo === "from"){
     const filterByFrom = singleton.getFilterByFromStrategy();
     filterByFrom.setfilter(filtro);
-    const filter = new EmailFilter(filterByFrom);
+    const filter = singleton.getEmailFilter();
+    filter.setStrategy(filterByFrom);
     coleccion.setitems(filter.filter(coleccion.getItems()))
     iterador.rewind();
     return coleccion.getItems();
@@ -345,7 +345,8 @@ function filtrar(campo, filtro, data){
   if(campo === "to"){
     const filterByTo = singleton.getFilterByToStrategy();
     filterByTo.setfilter(filtro);
-    const filter = new EmailFilter(filterByTo);
+    const filter = singleton.getEmailFilter();
+    filter.setStrategy(filterByTo);
     coleccion.setitems(filter.filter(coleccion.getItems()))
     iterador.rewind();
     return coleccion.getItems();
@@ -353,7 +354,8 @@ function filtrar(campo, filtro, data){
   if(campo === "subject"){
     const filterBySubject = singleton.getFilterBySubjectStrategy();
     filterBySubject.setfilter(filtro);
-    const filter = new EmailFilter(filterBySubject);
+    const filter = singleton.getEmailFilter();
+    filter.setStrategy(filterBySubject);
     coleccion.setitems(filter.filter(coleccion.getItems()))
     iterador.rewind();
     return coleccion.getItems();
@@ -361,7 +363,8 @@ function filtrar(campo, filtro, data){
   if(campo === "body"){
     const filterByBody = singleton.getFilterByBodyStrategy();
     filterByBody.setfilter(filtro);
-    const filter = new EmailFilter(filterByBody);
+    const filter = singleton.getEmailFilter();
+    filter.setStrategy(filterByBody);
     coleccion.setitems(filter.filter(coleccion.getItems()))
     iterador.rewind();
     return coleccion.getItems();
