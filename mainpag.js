@@ -74,6 +74,7 @@ function obtenerfavoritos(){
 }
 //funcion que pinte los correos en la pagina de favoritos
 const pintarCorreosfavoritos = data => { 
+  console.log(data);
   const templateCorreo = document.getElementById('template-correo').content;
   data.forEach(correo => {
     //se cargan los datos del correo en el template
