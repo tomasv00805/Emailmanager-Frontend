@@ -34,6 +34,7 @@ const pintarCorreosrecividos = data => {
       const id = e.target.dataset.id;
       guardarenfavoritos(id);
     }
+    );
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
