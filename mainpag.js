@@ -9,7 +9,8 @@ const botonfiltrar = document.getElementById('botonfiltrar');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
-const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
+const principiolinkfront=("https://emailmanager-frontend-phi.vercel.app/")
+//const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
 import { Singleton } from './class/singleton.js';
 let singleton = new Singleton();
 let coleccion = singleton.getCollection();
@@ -18,13 +19,15 @@ let iterador = coleccion.getIterator();
 function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
+  //constante que guarda el id del correo que sea de tipo int y no string
+  const idint = parseInt(id);
   fetch(principiolink+"favorite/"+savedUsername, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      emailId: id
+      emailId: idint
     })
   })
     .then(res => res.json())
@@ -39,13 +42,14 @@ function guardarenfavoritos(id){
 function eliminardefavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
+  const idint = parseInt(id);
   fetch(principiolink+"favorite/"+savedUsername, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      emailId: id
+      emailId: idint
     })
   })
     .then(res => res.json())
@@ -69,7 +73,8 @@ function obtenerfavoritos(){
     })
 }
 //funcion que pinte los correos en la pagina de favoritos
-function pintarCorreosfavoritos(data){
+const pintarCorreosfavoritos = data => { 
+  console.log(data);
   const templateCorreo = document.getElementById('template-correo').content;
   data.forEach(correo => {
     //se cargan los datos del correo en el template
@@ -87,10 +92,7 @@ function pintarCorreosfavoritos(data){
   //cargo el fragment en el div donde van a estar los correos
   correo.appendChild(fragment);
 }
-
-    
-
-
+//verceeeeel
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   coleccion.setitems(data);
@@ -375,7 +377,7 @@ if(window.location.pathname === '/'){
             alert(data.error);
           }else{
             localStorage.setItem('username', username.value);
-            window.location.href = "https://emailmanager-frontend.vercel.app/webs/main.html";
+            window.location.href = principiolinkfront+"webs/main.html";
           }
         })
     }
