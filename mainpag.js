@@ -18,7 +18,7 @@ let iterador = coleccion.getIterator();
 function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
-  fetch(principiolink+"favorite/"+ savedUsername, {
+  fetch(principiolink+"favorite/"+savedUsername, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -36,6 +36,60 @@ function guardarenfavoritos(id){
       }
     })
 }
+function eliminardefavoritos(id){
+  console.log("MAMA ACA ESTOY");
+  const savedUsername = localStorage.getItem('username');
+  fetch(principiolink+"favorite/"+savedUsername, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      emailId: id
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        alert(data.error);
+      }else{
+        alert('Correo eliminado de favoritos');
+      }
+    })
+}
+
+//funcion que reetornee los favoritos en un json
+function obtenerfavoritos(){
+  const savedUsername = localStorage.getItem('username');
+  fetch(principiolink+"favorite/"+savedUsername)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      return data;
+    })
+}
+//funcion que pinte los correos en la pagina de favoritos
+function pintarCorreosfavoritos(data){
+  const templateCorreo = document.getElementById('template-correo').content;
+  data.forEach(correo => {
+    //se cargan los datos del correo en el template
+    templateCorreo.querySelector(".remitente").textContent = correo.from + correo.to;
+    templateCorreo.querySelector(".Asunto").textContent = correo.subject;
+    //que solo se muestren 15 palabras
+    templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botoneliminar").dataset.id = correo.id;
+    //se clona el template para unir todas sus partes
+    const clone = templateCorreo.cloneNode(true);
+    //se agrega el clone al fragment
+    fragment.appendChild(clone);
+  });
+  //cargo el fragment en el div donde van a estar los correos
+  correo.appendChild(fragment);
+}
+
+    
+
 
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
@@ -218,6 +272,10 @@ function handleRoutes(){
       }
       );
       
+  }
+  if(path === '/webs/favoritos.html'){
+    pintarCorreosfavoritos(obtenerfavoritos());
+
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send y favoritos
