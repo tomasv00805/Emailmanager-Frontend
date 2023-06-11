@@ -62,16 +62,6 @@ function eliminardefavoritos(id){
     })
 }
 
-//funcion que reetornee los favoritos en un json
-function obtenerfavoritos(){
-  const savedUsername = localStorage.getItem('username');
-  fetch(principiolink+"favorite/"+savedUsername)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      return data;
-    })
-}
 //funcion que pinte los correos en la pagina de favoritos
 const pintarCorreosfavoritos = data => { 
   console.log(data);
@@ -276,7 +266,13 @@ function handleRoutes(){
       
   }
   if(path === '/webs/favoritos.html'){
-    pintarCorreosfavoritos(obtenerfavoritos());
+    //aca se pintan los correos favoritos
+    fetch(principiolink+"favorite/" + savedUsername)
+      .then(res => res.json())
+      .then(data => {
+        pintarCorreosfavoritos(data);
+      }
+      );
 
   }
 }
