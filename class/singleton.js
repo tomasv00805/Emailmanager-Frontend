@@ -13,7 +13,7 @@ export class Singleton {
     this.filterByBody = new FilterByBodyStrategy();
     this.filterBySubject = new FilterBySubjectStrategy();
     this.collection = new Collection();
-    this.emailFilter = new EmailFilter(this.filterbySubject);
+    this.emailFilter = new EmailFilter(this.filterBySubject);
 
     Singleton.instance = this;
   }
