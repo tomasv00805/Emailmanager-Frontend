@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>bandeja de entrada</title>
 </head>
 <body class="bg-[#201E1E]">
     <header class="flex items-center justify-between px-4 py-3 bg-[#12181B]">
@@ -15,9 +15,10 @@
     <div class="flex flex-row h-screen">
         <div class="basis-2/12">
                 <div class="flex flex-col">
-                    <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">Enviar correo</button>
-                    <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">bandeja de entrada</button>
-                    <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" onclick="cambiarColor(this)">bandeja de enviados</button>
+                    <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" >Enviar correo</button>
+                    <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio" >bandeja de entrada</button>
+                    <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de enviados</button>
+                    <button id="botonbandejafavoritos" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de favoritos</button>
                 </div>
         </div>
         <div class="basis-3/12 flex flex-col ">
@@ -28,8 +29,13 @@
                 
             <!-- Input de búsqueda y botón -->
             <div class="flex p-4">
-              <input type="text" class="w-full px-2 py-1 border border-gray-400 rounded-l focus:outline-none" placeholder="Buscar">
-              <button class="px-4 py-1 bg-[#3749EA] text-white font-bold rounded-r">Buscar</button>
+                <select id="campo"> 
+                    <option value="body">body</option> 
+                    <option value="from">from</option> 
+                    <option value="subject">subject</option> 
+                </select>
+              <input type="text" class="w-full px-2 py-1 border border-gray-400 rounded-l focus:outline-none" placeholder="Buscar" id="filtro">
+              <button class="px-4 py-1 bg-[#3749EA] text-white font-bold rounded-r" id="botonfiltrar">Buscar</button>
             </div>
               
             <!-- Scroll -->
@@ -40,6 +46,7 @@
                         <div class="font-bold text-gray-300 remitente">Remitente</div>
                         <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
                         <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
+                        <button class="botonfavoritos bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 BotondeFavoritos" id="">fav</button>
                     </div>   
                 </template>
             </div>
@@ -62,6 +69,7 @@
             </form>
         </div>
     </div>
+    <!-- !-->
 </body>
-<script src="../mainpag.js"></script>
+<script type="module" src="../mainpag.js"></script>
 </html>
