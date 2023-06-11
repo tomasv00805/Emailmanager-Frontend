@@ -1,4 +1,4 @@
-import { FilterByToStrategy, FilterByFromStrategy, FilterBySubjectStrategy, FilterByBodyStrategy }from'./strategy.js';
+import { FilterByToStrategy, FilterByFromStrategy, FilterBySubjectStrategy, FilterByBodyStrategy, EmailFilter }from'./strategy.js';
 import { Collection } from'./Collection.js';
 
 // Singleton para las estrategias
@@ -13,8 +13,13 @@ export class Singleton {
     this.filterByBody = new FilterByBodyStrategy();
     this.filterBySubject = new FilterBySubjectStrategy();
     this.collection = new Collection();
+    this.emailFilter = new EmailFilter(this.filterbySubject);
 
     Singleton.instance = this;
+  }
+
+  getEmail() {
+    return this.emailFilter;
   }
 
   getFilterByToStrategy() {
