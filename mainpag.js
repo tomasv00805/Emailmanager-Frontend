@@ -15,7 +15,7 @@ let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
 
-export function guardarenfavoritos(id){
+function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
   fetch(principiolink+"favorite/"+ savedUsername, {
@@ -36,6 +36,7 @@ export function guardarenfavoritos(id){
       }
     })
 }
+
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   coleccion.setitems(data);
@@ -101,6 +102,7 @@ function handleRoutes(){
       });
       //funcion para mostrar el correo seleccionado al hacer click en un correo
       correo.addEventListener('click', (e) => {
+        if(e.target.classList.contains('remitente')){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
         const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
@@ -117,7 +119,8 @@ function handleRoutes(){
               }
             });
           });
-      }
+        }
+    }
       );
       //Aca lo que hacemos es filtrar los correos que se muestran en pantalla dependiendo del filtro y el campo que se elija 
       
