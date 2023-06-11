@@ -15,7 +15,27 @@ let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
 
-
+export function guardarenfavoritos(id){
+  console.log("MAMA ACA ESTOY");
+  const savedUsername = localStorage.getItem('username');
+  fetch(principiolink+"favorite/"+ savedUsername, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: id
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        alert(data.error);
+      }else{
+        alert('Correo agregado a favoritos');
+      }
+    })
+}
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   coleccion.setitems(data);
@@ -293,27 +313,7 @@ if(window.location.pathname === '/'){
     }
   })
 }
-export function guardarenfavoritos(id){
-  console.log("MAMA ACA ESTOY");
-  const savedUsername = localStorage.getItem('username');
-  fetch(principiolink+"favorite/"+ savedUsername, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: id
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if(data.error){
-        alert(data.error);
-      }else{
-        alert('Correo agregado a favoritos');
-      }
-    })
-}
+
 
 window.addEventListener('DOMContentLoaded', handleRoutes);
 
