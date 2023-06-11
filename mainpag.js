@@ -96,7 +96,7 @@ function handleRoutes(){
             //transfomrame el listafiltrada en un json
             listafiltrada = JSON.stringify(listafiltrada);
             listafiltrada = JSON.parse(listafiltrada);
-            correo.innerHTML = "";
+            
             console.log(listafiltrada);
             pintarCorreosrecividos(listafiltrada);
           });
