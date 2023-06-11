@@ -91,9 +91,6 @@ const pintarCorreosfavoritos = data => {
   correo.appendChild(fragment);
 }
 
-    
-
-
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   coleccion.setitems(data);
