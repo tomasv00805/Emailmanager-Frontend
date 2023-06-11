@@ -93,6 +93,7 @@ function handleRoutes(){
           .then(data => {
             let listafiltrada = filtrar(campo, filtro, data);
             correo.innerHTML = "";
+            console.log(listafiltrada);
             pintarCorreosrecividos(listafiltrada);
           });
       }
