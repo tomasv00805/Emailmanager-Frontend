@@ -129,7 +129,7 @@ function handleRoutes(){
           .then(res => res.json())
           .then(data => {
             data.forEach(correo => {
-              if(correo.id === id){
+              if(correo.id == id){
                 templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.to;
                 templateCorreoseleccionado.querySelector(".asuntocorreo").textContent = correo.subject;
                 templateCorreoseleccionado.querySelector(".cuerpocorreo").textContent = correo.body;
