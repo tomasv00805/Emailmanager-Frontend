@@ -24,7 +24,7 @@ function guardarenfavoritos(id){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      id: id
+      emailId: id
     })
   })
     .then(res => res.json())
