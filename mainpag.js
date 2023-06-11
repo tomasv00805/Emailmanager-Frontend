@@ -139,7 +139,7 @@ function handleRoutes(){
         .then(data => {
           data.forEach(correo => {
             if(id == correo.id){
-              fetch(principiolink+'favorite', {
+              fetch(principiolink+'favorite/' + savedUsername, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -163,6 +163,7 @@ function handleRoutes(){
           });
         });
     }
+    );
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
