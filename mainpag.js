@@ -131,7 +131,9 @@ function handleRoutes(){
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
       for(let i = 0; i < botonfavoritos.length; i++){
-        console.log(botonfavoritos[i]);
+        botonfavoritos[i].addEventListener('click', (e) => {
+        console.log(botonfavoritos[i].dataset.id);
+        })
   }
   }
   if(path === '/webs/sent.html'){
