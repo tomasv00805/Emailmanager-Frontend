@@ -27,6 +27,8 @@ const pintarCorreosrecividos = data => {
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -57,6 +59,8 @@ const pintarCorreosenviados = data => {
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
+    //se guarda el id del correo en el boton de clase botonfavoritos
+    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -125,7 +129,21 @@ function handleRoutes(){
       }
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
-    
+    correo.addEventListener('click', (e) => {
+      e.preventDefault();
+      const savedUsername = localStorage.getItem('username');
+      const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+      fetch(principiolink+"inbox/" + savedUsername)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(correo => {
+            if(correo.id == id){
+              guardarenfavoritos(correo.id);
+            }
+          });
+        });
+    }
+    );
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
