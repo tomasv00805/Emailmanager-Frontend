@@ -132,6 +132,7 @@ function handleRoutes(){
     let botonfavoritos = document.getElementsByClassName('botonfavoritos');
     for(let i = 0; i < botonfavoritos.length; i++){
       botonfavoritos[i].addEventListener('click', (e) => {
+        console.log("hola la puta madre")
         e.preventDefault();
         const id = e.target.dataset.id;
         guardarenfavoritos(id);
