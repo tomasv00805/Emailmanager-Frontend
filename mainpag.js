@@ -9,7 +9,8 @@ let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
 const principiolinkfront=("https://emailmanager-frontend.vercel.app/")
-import { EmailFilter, Singleton } from './class/singleton.js';
+import { Singleton } from './class/singleton.js';
+import { EmailFilter } from './class/strategy.js';
 let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
