@@ -10,7 +10,7 @@ export class FilterByToStrategy extends FilterStrategy {
   }
 
   filterEmails(emails) {
-    return emails.filter((email) => email.to.toLowerCase().includes(this.to.toLowerCase()));
+    return emails.filter((email) => email.to.includes(this.to));
   }
 }
 
