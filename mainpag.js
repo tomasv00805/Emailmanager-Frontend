@@ -244,7 +244,6 @@ function handleRoutes(){
         }
       }
       );
-      const botonfiltrar = document.getElementById('botonfiltrar');
       botonfiltrar.addEventListener('click', (e) => {
         e.preventDefault();
         const filtro = document.getElementById('filtro').value;
