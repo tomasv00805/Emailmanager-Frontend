@@ -130,8 +130,11 @@ function handleRoutes(){
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
     const botonfavoritos = document.querySelector('#BotondeFavoritos');
-    console.log(botonfavoritos);
-    
+    function hagoclic(){
+      alert('hola');
+    }
+    botonfavoritos.addEventListener('click', hagoclic());
+
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
