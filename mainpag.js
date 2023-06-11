@@ -90,7 +90,7 @@ const pintarCorreosfavoritos = data => {
   //cargo el fragment en el div donde van a estar los correos
   correo.appendChild(fragment);
 }
-
+//verceeeeel
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   coleccion.setitems(data);
