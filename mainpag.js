@@ -376,7 +376,7 @@ if(window.location.pathname === '/'){
             alert(data.error);
           }else{
             localStorage.setItem('username', username.value);
-            window.location.href = "https://emailmanager-frontend.vercel.app/webs/main.html";
+            window.location.href = principiolinkfront+"webs/main.html";
           }
         })
     }
