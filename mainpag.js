@@ -6,7 +6,6 @@ const templateCorreoseleccionado = document.getElementById('template_correoselec
 const loginForm = document.getElementById('login-form');
 const botonsalir = document.getElementById('botonsalir');
 const botonfiltrar = document.getElementById('botonfiltrar');
-const botonfavoritos = correo.querySelectorAll('button');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
 const principiolink = ("https://emailmanager-backend.vercel.app/")
@@ -130,6 +129,7 @@ function handleRoutes(){
       }
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
+    const botonfavoritos = correo.querySelectorAll('button');
     botonfavoritos.addEventListener('click', (e) => {
       e.preventDefault();
       console.log(botonfavoritos.dataset.id);
