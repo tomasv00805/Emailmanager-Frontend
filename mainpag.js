@@ -188,7 +188,7 @@ function handleRoutes(){
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send
-if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favorito.html'){
+if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html'){
   const savedUsername = localStorage.getItem('username');
   nombredeusuario.textContent = savedUsername;
   botonsalir.addEventListener('click', (e) => {
