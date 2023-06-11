@@ -129,10 +129,21 @@ function handleRoutes(){
       }
       );
     //funcion para agregar un correo a favoritos cuando se hace click en el boton con la clase botonfavoritos
-    let botonfavoritos = document.getElementsByClassName('botonfavoritos');
-    console.log(botonfavoritos);
-    console.log(botonfavoritos.dataset.id);
-    botonfavoritos.addEventListener('click', guardarenfavoritos(botonfavoritos.dataset.id));
+    correo.addEventListener('click', (e) => {
+      e.preventDefault();
+      const savedUsername = localStorage.getItem('username');
+      const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+      fetch(principiolink+"inbox/" + savedUsername)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(correo => {
+            if(correo.id == id){
+              guardarenfavoritos(correo.id);
+            }
+          });
+        });
+    }
+    );
   }
   if(path === '/webs/sent.html'){
     fetch(principiolink+"sent/" + savedUsername)
