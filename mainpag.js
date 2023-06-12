@@ -298,7 +298,6 @@ function handleRoutes(){
                 templateCorreoseleccionado.classList.remove("hidden");
                 formulario_correo.classList.add("hidden");
               }
-
             });
           });
        }
