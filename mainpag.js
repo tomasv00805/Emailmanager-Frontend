@@ -329,7 +329,7 @@ function handleRoutes(){
                         <div class="font-bold text-gray-300 remitente">Remitente</div>
                         <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
                         <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
-                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 botoneliminar">fav</button>
+                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 botoneliminar">eliminar</button>
                     </div>   
                 </template>
             `;
