@@ -95,7 +95,7 @@ const pintarCorreosrecividos = data => {
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
-    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
+    templateCorreo.querySelector(".BotondeFavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -127,7 +127,7 @@ const pintarCorreosenviados = data => {
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
     //se guarda el id del correo en el boton de clase botonfavoritos
-    templateCorreo.querySelector(".botonfavoritos").dataset.id = correo.id;
+    templateCorreo.querySelector(".BotondeFavoritos").dataset.id = correo.id;
     //se clona el template para unir todas sus partes
     const clone = templateCorreo.cloneNode(true);
     //se agrega el clone al fragment
@@ -151,7 +151,7 @@ function handleRoutes(){
         if(e.target.classList.contains('remitente')){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
-        const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+        const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
         fetch(principiolink +"inbox/" + savedUsername)
           .then(res => res.json())
           .then(data => {
@@ -169,7 +169,7 @@ function handleRoutes(){
         if(e.target.classList.contains('BotondeFavoritos')){
           e.preventDefault();
           const savedUsername = localStorage.getItem('username');
-          const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+          const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
           console.log(id);
           guardarenfavoritos(id);
           }
@@ -195,7 +195,7 @@ function handleRoutes(){
                         <div class="font-bold text-gray-300 remitente">Remitente</div>
                         <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
                         <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
-                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 botonfavoritos">fav</button>
+                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 BotondeFavoritos">fav</button>
                     </div>   
                 </template>
             `;
@@ -215,9 +215,10 @@ function handleRoutes(){
       }
       );
       correo.addEventListener('click', (e) => {
+        if(e.target.classList.contains('remitente')){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
-        const id = e.target.parentElement.querySelector(".botonfavoritos").dataset.id;
+        const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
         console.log(id);
         fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
@@ -230,12 +231,19 @@ function handleRoutes(){
                 templateCorreoseleccionado.classList.remove("hidden");
                 formulario_correo.classList.add("hidden");
               }
-              
+
             });
           });
+       }
+       if(e.target.classList.contains('BotondeFavoritos')){
+        e.preventDefault();
+        const savedUsername = localStorage.getItem('username');
+        const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
+        console.log(id);
+        guardarenfavoritos(id);
+        }
       }
       );
-      const botonfiltrar = document.getElementById('botonfiltrar');
       botonfiltrar.addEventListener('click', (e) => {
         e.preventDefault();
         const filtro = document.getElementById('filtro').value;
@@ -254,7 +262,7 @@ function handleRoutes(){
                         <div class="font-bold text-gray-300 remitente">Remitente</div>
                         <div class="text-lg text-gray-300 font-bold mt-1 Asunto">Título del correo</div>
                         <div class="text-gray-400 mt-2 pb-2 cuerpo">Texto del correo</div>
-                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 botonfavoritos">fav</button>
+                        <button class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 mt-2 BotondeFavoritos">fav</button>
                     </div>   
                 </template>
             `;
