@@ -316,7 +316,7 @@ function handleRoutes(){
         const filtro = document.getElementById('filtro').value;
         const campo = document.getElementById('campo').value;
         const savedUsername = localStorage.getItem('username');
-        fetch(principiolink+"sent/" + savedUsername)
+        fetch(principiolink+"favorite/" + savedUsername)
         .then(res => res.json())
           .then(data => {
             let listafiltrada = filtrar(campo, filtro, data);
