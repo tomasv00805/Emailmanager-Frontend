@@ -120,7 +120,7 @@ const pintarCorreosrecividos = data => {
 };
 const pintarCorreosenviados = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  data = data.reverse()
+  data.reverse()
   data.forEach(correo => {
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.to;
