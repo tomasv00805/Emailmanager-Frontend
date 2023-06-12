@@ -308,7 +308,7 @@ function handleRoutes(){
           const id = e.target.parentElement.querySelector(".botoneliminar").dataset.id;
           console.log(id);
           eliminardefavoritos(id);
-          }
+        }
   }
       );
 }
