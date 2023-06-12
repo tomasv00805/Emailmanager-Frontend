@@ -9,25 +9,15 @@
 </head>
 <body class="bg-[#12181B] min-h-screen flex items-center justify-center ">
     <div class="bg-[#201E1E] p-4 flex flex-col text-white">
-            <h1 class="text-3xl  font-medium  mb-3">Iniciar sesion</h1>
-            
-            <form id="login-form" action="" class="flex flex-col">
-                <input class="mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-[400px] h-[45px] placeholder:mp-3" type="text" placeholder="Correo o nombre de usuario" id="username">
-                <input class="mb-5 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-[400px] h-[45px]" type="password" placeholder="Contraseña" id="password">
-                <button class="mb-2 text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit">Iniciar sesion</button>
-            </form>
-            <button class="text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit" id="BotonCrearUsuario"> Crear usuario</button>
-
+        <h1 class="text-3xl font-medium mb-3">Iniciar sesión</h1>
+        
+        <form id="login-form" action="" class="flex flex-col">
+            <input class="text-sm mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-full sm:w-[400px] h-[45px] placeholder:mp-3" type="text" placeholder="Correo o nombre de usuario" id="username">
+            <input class="mb-5 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-full sm:w-[400px] h-[45px]" type="password" placeholder="Contraseña" id="password">
+            <button class="mb-2 text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit">Iniciar sesión</button>
+        </form>
+        <button class="text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit" id="BotonCrearUsuario">Crear usuario</button>
     </div>
-    <script src="../mainpag.js"  type="module"></script>
-</body>
-</html>
-
-</div>
-<script>
-    document.getElementById("BotonCrearUsuario").addEventListener("click", function() {
-        window.location.href = "https://emailmanager-frontend.vercel.app/webs/singin.html";
-    });
-</script>
+    <script src="../mainpag.js" type="module"></script>
 </body>
 </html>
