@@ -68,7 +68,7 @@ const pintarCorreosfavoritos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
   data.forEach(correo => {
     //se cargan los datos del correo en el template
-    templateCorreo.querySelector(".remitente").textContent = correo.from +gcorreo.to;
+    templateCorreo.querySelector(".remitente").textContent = correo.from + correo.to;
     templateCorreo.querySelector(".Asunto").textContent = correo.subject;
     //que solo se muestren 15 palabras
     templateCorreo.querySelector(".cuerpo").textContent = correo.body.split(" ").slice(0, 20).join(" ");
