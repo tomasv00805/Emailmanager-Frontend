@@ -281,6 +281,7 @@ function handleRoutes(){
         pintarCorreosfavoritos(data);
       }
       );
+
       correo.addEventListener('click', (e) => {
         if(e.target.classList.contains('remitente')){
         e.preventDefault();
