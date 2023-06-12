@@ -66,6 +66,7 @@ function eliminardefavoritos(id){
 const pintarCorreosfavoritos = data => { 
   console.log(data);
   const templateCorreo = document.getElementById('template-correo').content;
+  data.reverse();
   data.forEach(correo => {
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.from +gcorreo.to;
@@ -85,6 +86,7 @@ const pintarCorreosfavoritos = data => {
 //verceeeeel
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
+  data.reverse();
   coleccion.setitems(data);
   iterador.rewind();
   while(iterador.valid()){
@@ -120,7 +122,7 @@ const pintarCorreosrecividos = data => {
 };
 const pintarCorreosenviados = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  data.reverse()
+  data.reverse();
   data.forEach(correo => {
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.to;
