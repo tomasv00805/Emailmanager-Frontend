@@ -276,24 +276,22 @@ function handleRoutes(){
   }
 }
 //Cosas que solo se ejecutan en la pagina de main y send y favoritos
-if(window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html'){
+if (window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html') {
   const savedUsername = localStorage.getItem('username');
   nombredeusuario.textContent = savedUsername;
   botonsalir.addEventListener('click', (e) => {
     e.preventDefault();
     window.location.href = principiolinkfront;
-  }
-  )
-  //funcion para mostrar el formulario_correo cuadno haga clic en el boton con id botonenviarcorreo
+  });
+
   const botonenviarcorreo = document.getElementById('botonenviarcorreo');
   const formulario_correo = document.getElementById('formulario_correo');
   botonenviarcorreo.addEventListener('click', (e) => {
     e.preventDefault();
     templateCorreoseleccionado.classList.add("hidden");
     formulario_correo.classList.remove("hidden");
-  }
-  )
-  //funcion para enviar el correo
+  });
+
   const botonenviar = document.getElementById('botonenviar');
   botonenviar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -315,39 +313,41 @@ if(window.location.pathname === '/webs/main.html' || window.location.pathname ==
     })
       .then(res => res.json())
       .then(data => {
-        if(data.error){
+        if (data.error) {
           alert(data.error);
-        }else{
+        } else {
           alert('Correo enviado');
           formulario_correo.classList.add("hidden");
         }
-      })
-  }
-  )
-  
-  //al oprimir el boton con la id botonbandejaentrada la pagina se direcciona a la bandeja de entrada
+      });
+  });
+
   const botonbandejaentrada = document.getElementById('botonbandejaentrada');
   botonbandejaentrada.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = principiolinkfront+'webs/main.html';
-  }
-  )
-  //al oprimir el boton con la id botonbandejaenviados la pagina se direcciona a la bandeja de entrada
+    window.location.href = principiolinkfront + 'webs/main.html';
+  });
+
   const botonbandejaenviados = document.getElementById('botonbandejaenviados');
   botonbandejaenviados.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = principiolinkfront+'webs/sent.html';
-  }
-  )
-  //al oprimir el boton con la id botonbandejafavoritos la pagina se direcciona a la bandeja de entrada
+    window.location.href = principiolinkfront + 'webs/sent.html';
+  });
+
   const botonbandejafavoritos = document.getElementById('botonbandejafavoritos');
   botonbandejafavoritos.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = principiolinkfront+'webs/favoritos.html';
-  }
-  )
+    window.location.href = principiolinkfront + 'webs/favoritos.html';
+  });
 
+  const botonmenu = document.getElementById('botonmenu');
+  const menuopciones = document.getElementById('menuopciones');
+  botonmenu.addEventListener('click', (e) => {
+    e.preventDefault();
+    menuopciones.classList.toggle("hidden");
+  });
 }
+
 
 //Cosas que solo se ejecutan en la pagina index.html(login)
 if(window.location.pathname === '/'){
