@@ -286,7 +286,7 @@ function handleRoutes(){
         if(e.target.classList.contains('remitente')){
         e.preventDefault();
         const savedUsername = localStorage.getItem('username');
-        const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
+        const id = e.target.parentElement.querySelector(".botoneliminar").dataset.id;
         console.log(id);
         fetch(principiolink+"sent/" + savedUsername)
           .then(res => res.json())
