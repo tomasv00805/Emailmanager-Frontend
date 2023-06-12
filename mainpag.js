@@ -16,6 +16,7 @@ let singleton = new Singleton();
 let coleccion = singleton.getCollection();
 let iterador = coleccion.getIterator();
 
+
 function guardarenfavoritos(id){
   console.log("MAMA ACA ESTOY");
   const savedUsername = localStorage.getItem('username');
