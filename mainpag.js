@@ -380,6 +380,37 @@ if (window.location.pathname === '/webs/main.html' || window.location.pathname =
 
 }
 
+if(window.location.pathname === '/webs/singin.html'){
+  const singingform = document.getElementById('singing-form');
+  singingform.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const mail = document.getElementById('mail').value;
+    const password = document.getElementById('password').value;
+    
+    fetch(principiolink+'register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: username,
+        email: mail,
+        password: password
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.error){
+          alert(data.error);
+        }else{
+          alert('Usuario registrado');
+          window.location.href = principiolinkfront;
+        }
+      }
+      );
+  });
+}
 
 //Cosas que solo se ejecutan en la pagina index.html(login)
 if(window.location.pathname === '/'){
