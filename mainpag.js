@@ -382,7 +382,7 @@ if (window.location.pathname === '/webs/main.html' || window.location.pathname =
 }
 
 if(window.location.pathname === '/webs/singin.html'){
-  const singingform = document.getElementById('singing-form');
+  const singingform = document.getElementById('signin-form');
   singingform.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
