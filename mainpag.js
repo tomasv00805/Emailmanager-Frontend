@@ -348,12 +348,7 @@ if (window.location.pathname === '/webs/main.html' || window.location.pathname =
     window.location.href = principiolinkfront + 'webs/favoritos.html';
   });
 
-  const botonmenu = document.getElementById('botonmenu');
-  const menuopciones = document.getElementById('menuopciones');
-  botonmenu.addEventListener('click', (e) => {
-    e.preventDefault();
-    menuopciones.classList.toggle("hidden");
-  });
+
 }
 
 
