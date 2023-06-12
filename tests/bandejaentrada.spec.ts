@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('Ver Bandeja de Entrada', async ({ page }) => {
   await page.goto('https://emailmanager-frontend-phi.vercel.app/');
   await page.getByPlaceholder('Correo o nombre de usuario').click();
   await page.getByPlaceholder('Correo o nombre de usuario').fill('tomi');
