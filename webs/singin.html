@@ -7,16 +7,16 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#12181B] min-h-screen flex items-center justify-center ">
-    <div class="bg-[#201E1E] p-4 flex flex-col text-white">
-            <h1 class="text-3xl  font-medium  mb-3">crear usuario</h1>
-            
-            <form id="signin-form" action="" class="flex flex-col">
-                <input class="mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-[400px] h-[45px] placeholder:mp-2" type="text" placeholder="usuario" id="username">
-                <input class="mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-[400px] h-[45px] placeholder:mp-2" type="text" placeholder="Correo" id="mail">
-                <input class="mb-5 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-[400px] h-[45px]" type="password" placeholder="Contraseña" id="password">
-                <button class="mb-5 text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit">registrarse</button>
-            </form>
+<body class="bg-[#12181B] min-h-screen flex items-center justify-center">
+    <div class="bg-[#201E1E] p-4 flex flex-col text-white max-w-md mx-auto">
+        <h1 class="text-3xl font-medium mb-3">Crear usuario</h1>
+        
+        <form id="signin-form" action="" class="flex flex-col">
+            <input class="mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-full sm:w-auto sm:min-w-[300px] h-[45px] placeholder:mp-2" type="text" placeholder="Usuario" id="username">
+            <input class="mb-4 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-full sm:w-auto sm:min-w-[300px] h-[45px] placeholder:mp-2" type="text" placeholder="Correo" id="mail">
+            <input class="mb-5 focus:outline-none focus:border-[#5060EC] rounded border-solid border-2 border-gray-700 bg-transparent w-full sm:w-auto sm:min-w-[300px] h-[45px]" type="password" placeholder="Contraseña" id="password">
+            <button class="mb-5 text-black bg-[#5060EC] hover:bg-[#3749E0] rounded h-[40px]" type="submit">Registrarse</button>
+        </form>
     </div>
     <script src="../mainpag.js" type="module"></script>
 </body>
