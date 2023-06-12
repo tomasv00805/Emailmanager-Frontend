@@ -85,7 +85,6 @@ const pintarCorreosfavoritos = data => {
 //verceeeeel
 const pintarCorreosrecividos = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  data.reverse();
   coleccion.setitems(data);
   iterador.rewind();
   while(iterador.valid()){
@@ -121,7 +120,6 @@ const pintarCorreosrecividos = data => {
 };
 const pintarCorreosenviados = data => {
   const templateCorreo = document.getElementById('template-correo').content;
-  data.reverse();
   data.forEach(correo => {
     //se cargan los datos del correo en el template
     templateCorreo.querySelector(".remitente").textContent = correo.to;
