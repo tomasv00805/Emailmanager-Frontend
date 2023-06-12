@@ -271,8 +271,8 @@ function handleRoutes(){
           });
       }
       );
-      
   }
+
   if(path === '/webs/favoritos.html'){
     //aca se pintan los correos favoritos
     fetch(principiolink+"favorite/" + savedUsername)
@@ -281,8 +281,8 @@ function handleRoutes(){
         pintarCorreosfavoritos(data);
       }
       );
-
-
+<<<<<<< HEAD
+=======
       correo.addEventListener('click', (e) => {
         if(e.target.classList.contains('remitente')){
         e.preventDefault();
@@ -300,7 +300,6 @@ function handleRoutes(){
                 templateCorreoseleccionado.classList.remove("hidden");
                 formulario_correo.classList.add("hidden");
               }
-
             });
           });
        }
