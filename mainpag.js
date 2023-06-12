@@ -281,37 +281,7 @@ function handleRoutes(){
         pintarCorreosfavoritos(data);
       }
       );
-      correo.addEventListener('click', (e) => {
-        if(e.target.classList.contains('remitente')){
-        e.preventDefault();
-        const savedUsername = localStorage.getItem('username');
-        const id = e.target.parentElement.querySelector(".BotondeFavoritos").dataset.id;
-        console.log(id);
-        fetch(principiolink+"sent/" + savedUsername)
-          .then(res => res.json())
-          .then(data => {
-            data.forEach(correo => {
-              if(correo.id == id){
-                templateCorreoseleccionado.querySelector(".nombrecorreo").textContent = correo.from+", "+correo.to;
-                templateCorreoseleccionado.querySelector(".asuntocorreo").textContent = correo.subject;
-                templateCorreoseleccionado.querySelector(".cuerpocorreo").textContent = correo.body;
-                templateCorreoseleccionado.classList.remove("hidden");
-                formulario_correo.classList.add("hidden");
-              }
-
-            });
-          });
-       }
-        if(e.target.classList.contains('botoneliminar')){
-          e.preventDefault();
-          const savedUsername = localStorage.getItem('username');
-          const id = e.target.parentElement.querySelector(".botoneliminar").dataset.id;
-          console.log(id);
-          eliminardefavoritos(id);
-          }
   }
-      );
-}
 }
 //Cosas que solo se ejecutan en la pagina de main y send y favoritos
 if (window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html') {

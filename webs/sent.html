@@ -11,10 +11,15 @@
     <header class="flex items-center justify-between px-4 py-3 bg-[#12181B]">
         <button class="px-3 py-2 text-gray-300 bg-transparent border border-gray-400 rounded hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white" type="exit" id="botonsalir">Salir</button>
         <h1 class="text-xl font-semibold text-gray-300" id="nombreusermain">Nombre</h1>
+        <button class="px-3 py-2 text-gray-300 bg-transparent border border-gray-400 rounded hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white md:hidden" id="botonmenu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
     </header>
     <div class="flex flex-col sm:flex-row h-screen">
-        <div class="sm:w-2/12">
-            <div class="flex flex-col">
+        <div class="md:w-2/12">
+            <div class="hidden md:flex flex-col" id="menuopciones">
                 <button id="botonenviarcorreo" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">Enviar correo</button>
                 <button id="botonbandejaentrada" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de entrada</button>
                 <button id="botonbandejaenviados" class="w-full py-2 text-center bg-[#3749EA] hover:bg-blue-700 text-white font-bold rounded boton-cambio">bandeja de enviados</button>
@@ -70,5 +75,14 @@
         </div>
     </div>
     <script type="module" src="../mainpag.js"></script>
+    <script>
+        const botonmenu = document.getElementById('botonmenu');
+        const menuopciones = document.getElementById('menuopciones');
+        botonmenu.addEventListener('click', (e) => {
+            e.preventDefault();
+            menuopciones.classList.toggle("hidden");
+        });
+    </script>
+
 </body>
 </html>
