@@ -281,8 +281,8 @@ function handleRoutes(){
         pintarCorreosfavoritos(data);
       }
       );
-<<<<<<< HEAD
-=======
+
+
       correo.addEventListener('click', (e) => {
         if(e.target.classList.contains('remitente')){
         e.preventDefault();
@@ -311,8 +311,9 @@ function handleRoutes(){
           console.log(id);
           eliminardefavoritos(id);
         }
->>>>>>> aad7c4057323b3c5f4819878153eb246d5ee5259
   }
+      );
+}
 }
 //Cosas que solo se ejecutan en la pagina de main y send y favoritos
 if (window.location.pathname === '/webs/main.html' || window.location.pathname === '/webs/sent.html' || window.location.pathname === '/webs/favoritos.html') {
