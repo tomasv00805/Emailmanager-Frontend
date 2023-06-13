@@ -21,8 +21,14 @@ test('Ver Bandeja de Entrada', async ({ page }) => {
     dialog.dismiss().catch(() => {});
   });
   await page.getByRole('button', { name: 'Enviar', exact: true }).click();
-  await page.getByRole('button', { name: 'bandeja de enviados' }).click();
   await page.waitForTimeout(3000)
+  await page.getByRole('button', { name: 'Enviar correo' }).click();
+  page.once('dialog', dialog => {
+    console.log(`Dialog message: ${dialog.message()}`);
+    dialog.dismiss().catch(() => {});
+  });
+  await page.getByRole('button', { name: 'Enviar', exact: true }).click();
+  await page.getByRole('button', { name: 'bandeja de enviados' }).click();
   await page.getByText('juli').nth(0).click();
   //await page.locator('#correos').getByText('juli').click();
   //await page.locator('#template_correoseleccionado').getByText('juli').click();
